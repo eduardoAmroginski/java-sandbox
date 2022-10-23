@@ -1,3 +1,7 @@
+package course.mypackageA;
+
+import course.mypackageB.Pearson;
+
 public class ClassObjSample {
 
     public static void main(String[] args) {
@@ -21,20 +25,4 @@ public class ClassObjSample {
 
     }
 
-}
-
-class Pearson {
-   String  name;
-   int age;
-   String gender;
-
-   void sleep(){
-       if (age < 10){
-           System.out.println(name + " will sleep more than 12 hours in a day");
-       } else if (age > 10 && age <=50) {
-           System.out.println(name + " will sleep less than 10 hours in a day");
-       } else {
-           System.out.println(name + " will sleep average than 10 hours in a day");
-       }
-   }
 }
