@@ -1,3 +1,5 @@
+package cursojava.executavel;
+
 import javax.swing.*;
 
 public class Main {
@@ -5,7 +7,7 @@ public class Main {
 
         int resposta = 0;
 
-        do{
+        do {
             double nota1 = Double.parseDouble(JOptionPane.showInputDialog("Informe a primeira nota: "));
             double nota2 = Double.parseDouble(JOptionPane.showInputDialog("Informe a segunda nota: "));
             double nota3 = Double.parseDouble(JOptionPane.showInputDialog("Informe a terceira nota: "));
@@ -14,7 +16,7 @@ public class Main {
 
             JOptionPane.showMessageDialog(null, String.format("A Media é: %.2f", media));
 
-           resposta = JOptionPane.showConfirmDialog(null, "Você quer ver se passou?");
+            resposta = JOptionPane.showConfirmDialog(null, "Você quer ver se passou?");
 
             if (resposta == 0) {
                 if (media >= 5) {
@@ -33,7 +35,7 @@ public class Main {
 
             resposta = JOptionPane.showConfirmDialog(null, "Tentar novamente?");
 
-        }while(resposta == 0);
+        } while (resposta == 0);
 
 
     }
