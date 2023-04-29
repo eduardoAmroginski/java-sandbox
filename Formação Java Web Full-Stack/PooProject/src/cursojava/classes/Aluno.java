@@ -16,19 +16,25 @@ public class Aluno {
     String dataMatricula;
     String nomeEscola;
     String serieMatriculado;
-    double nota1;
-    double nota2;
-    double nota3;
-    double nota4;
+
+    private Disciplina  disciplina = new Disciplina();
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
 
     //Podemos definir mais de um construtor para uma mesma classe
     // Construtor 1
-    public Aluno(){
+    public Aluno() {
 
     }
 
     // Construtor 2
-    public Aluno(String nomePadrao, int idadePadrao){
+    public Aluno(String nomePadrao, int idadePadrao) {
         nome = nomePadrao;
         idade = idadePadrao;
     }
@@ -117,50 +123,32 @@ public class Aluno {
         this.serieMatriculado = serieMatriculado;
     }
 
-    public double getNota1() {
-        return nota1;
+    public double getMediaNota() {
+        return (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
     }
 
-    public void setNota1(double nota1) {
-        this.nota1 = nota1;
-    }
-
-    public double getNota2() {
-        return nota2;
-    }
-
-    public void setNota2(double nota2) {
-        this.nota2 = nota2;
-    }
-
-    public double getNota3() {
-        return nota3;
-    }
-
-    public void setNota3(double nota3) {
-        this.nota3 = nota3;
-    }
-
-    public double getNota4() {
-        return nota4;
-    }
-
-    public void setNota4(double nota4) {
-        this.nota4 = nota4;
-    }
-
-    public double getMediaNota(){
-        return (nota1 + nota2 + nota3 + nota4) / 4;
-    }
-
-    public boolean getAlunoAprovado(){
+    public boolean getAlunoAprovado() {
         double media = this.getMediaNota();
 
-        if(media >= 7){
+        if (media >= 7) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return Objects.equals(nome, aluno.nome) && Objects.equals(numeroCpf, aluno.numeroCpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, numeroCpf);
     }
 
     @Override
@@ -176,24 +164,7 @@ public class Aluno {
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
                 ", serieMatriculado='" + serieMatriculado + '\'' +
-                ", nota1=" + nota1 +
-                ", nota2=" + nota2 +
-                ", nota3=" + nota3 +
-                ", nota4=" + nota4 +
+                ", disciplina=" + disciplina +
                 '}';
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Aluno aluno = (Aluno) o;
-        return nome.equals(aluno.nome);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome);
     }
 }
