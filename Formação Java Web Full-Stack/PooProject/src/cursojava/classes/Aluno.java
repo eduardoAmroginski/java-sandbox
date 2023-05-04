@@ -1,5 +1,7 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /*Classe/Objeto que representa o Aluno*/
@@ -17,15 +19,7 @@ public class Aluno {
     String nomeEscola;
     String serieMatriculado;
 
-    private Disciplina  disciplina = new Disciplina();
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
+    private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
     //Podemos definir mais de um construtor para uma mesma classe
     // Construtor 1
@@ -42,6 +36,14 @@ public class Aluno {
     /* Veremos os metodos SETTERS e GETTERS do Objeto */
     /* SET é para adicionar ou receber dados para os atributos */
     /* Get é para resgatar ou obter o valor do atributo */
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
 
     public String getNome() {
         return nome;
@@ -124,7 +126,12 @@ public class Aluno {
     }
 
     public double getMediaNota() {
-        return (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
+        double somaNotas = 0.0;
+        for (Disciplina disciplina : disciplinas){
+            somaNotas += disciplina.getNota();
+        }
+
+        return somaNotas/ disciplinas.size();
     }
 
     public boolean getAlunoAprovado() {
@@ -164,7 +171,7 @@ public class Aluno {
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
                 ", serieMatriculado='" + serieMatriculado + '\'' +
-                ", disciplina=" + disciplina +
+                ", disciplinas=" + disciplinas +
                 '}';
     }
 }
