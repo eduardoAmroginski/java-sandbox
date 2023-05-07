@@ -1,5 +1,7 @@
 package cursojava.classes;
 
+import cursojava.constantes.StatusAluno;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -141,6 +143,20 @@ public class Aluno {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public String getAlunoAprovado2() {
+        double media = this.getMediaNota();
+
+        if (media >= 5) {
+            if (media >= 7){
+                return StatusAluno.APROVADO;
+            }else{
+                return StatusAluno.RECUPERACAO;
+            }
+        } else {
+            return StatusAluno.REPROVADO;
         }
     }
 
